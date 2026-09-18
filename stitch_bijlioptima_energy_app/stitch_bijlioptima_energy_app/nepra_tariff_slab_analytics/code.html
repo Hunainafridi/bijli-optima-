@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#0f131c;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-secondary": "#412d00", "surface-container-highest": "#31353e", "on-background": "#dfe2ee", "surface-dim": "#0f131c", "on-tertiary-fixed": "#001e2b", "tertiary-container": "#7cd3ff", "outline-variant": "#3b4a41", "on-tertiary-fixed-variant": "#004d67", "primary-container": "#00e599", "surface-container-high": "#262a33", "surface-container": "#1c2028", "surface-bright": "#353942", "error": "#ffb4ab", "outline": "#849589", "on-secondary-fixed": "#271900", "on-tertiary": "#003548", "on-secondary-fixed-variant": "#5e4200", "tertiary-fixed-dim": "#75d1ff", "on-error-container": "#ffdad6", "on-secondary-container": "#6b4b00", "on-tertiary-container": "#005b79", "on-surface": "#dfe2ee", "surface": "#0f131c", "secondary-fixed": "#ffdea8", "inverse-primary": "#006c46", "secondary": "#ffdb9d", "surface-container-lowest": "#0a0e16", "primary": "#6dffba", "secondary-fixed-dim": "#ffba20", "primary-fixed": "#4dffb2", "surface-container-low": "#181c24", "error-container": "#93000a", "inverse-surface": "#dfe2ee", "secondary-container": "#feb700", "tertiary": "#c7eaff", "on-primary-container": "#00613e", "tertiary-fixed": "#c2e8ff", "on-surface-variant": "#bacbbe", "on-error": "#690005", "primary-fixed-dim": "#00e297", "surface-tint": "#00e297", "on-primary-fixed-variant": "#005234", "surface-variant": "#31353e", "inverse-on-surface": "#2c3039", "on-primary": "#003822", "on-primary-fixed": "#002112", "background": "#0f131c" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "space-lg": "1.5rem", "space-xl": "2.25rem", "space-md": "1rem", "space-sm": "0.5rem", "margin": "1.25rem", "space-xs": "0.25rem", "gutter": "1rem" }, fontFamily: { "body-lg": ["Geist"], "label-sm": ["JetBrains Mono"], "body-md": ["Geist"], "display-lg-mobile": ["Space Grotesk"], "headline-lg": ["Space Grotesk"], "label-lg": ["JetBrains Mono"], "display-lg": ["Space Grotesk"], "label-md": ["JetBrains Mono"], "headline-sm": ["Space Grotesk"], "body-sm": ["Geist"], "headline-md": ["Space Grotesk"] }, fontSize: { "body-lg": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "400" }], "label-sm": ["10px", { "lineHeight": "12px", "letterSpacing": "0.05em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "400" }], "display-lg-mobile": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.02em", "fontWeight": "500" }], "display-lg": ["44px", { "lineHeight": "52px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "500" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "400" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }] } } } }</script></head><body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-2xl shadow-[0_1px_16px_rgba(0,0,0,0.45)] pt-safe"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm min-w-0"><img alt="BijliOptima Core Logo" class="h-8 w-auto object-contain flex-shrink-0" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaWv4qbFdAS4QaYUaOm0yGj3516BpMn-f_miN-QQKX407iz9fK0WXjxV6vtu1E3unC_xCeHBK01fBA7VwspcCJpRWqADK2g_lk2h3Y5hKoVXl1ohkFxcczK39A8LmgTFgruiO0lVkfJ4UAs2Lf1JTs4bmr1cvLABZdSkNxI7Ul7Bb2ofZNjMW3aobSQpWEQjWKMuKfb4XHjdbV8Ce_NURy4-0cE7sKWCkAl7Bt_ms4ZOZQHt98EIjFwA"/><div class="flex flex-col min-w-0"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface truncate">BijliOptima</span><span class="font-label-sm text-label-sm text-on-surface-variant hidden sm:inline-block px-1.5 py-0.5 rounded bg-surface-container-high">v2.4</span></div><div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-semibold truncate">GRID: SYNCHRONIZED</span></div></div></div><div class="flex items-center gap-space-sm flex-shrink-0"><div class="text-right hidden xs:flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">TELEMETRY</span><span class="font-label-md text-label-md text-primary">50.02 Hz</span></div><div class="p-0.5 rounded-full bg-surface-container-high flex items-center justify-center"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnXX2VqPbJzfjmM2N5tGbgzQbpMvy0nqXD5Vw4AOpMY0ge_KOxIbm1APiW3MPC-b7InXVI8n_2kHDuBC0y4jmC5EYUozk1mCNUCcbCbpesrppDTM5LzVSDjDfk5uW0aXhDhaQvx5HXU8I_heYOrKL82NyQgFDkzxemZY_OvR4-fiDgBAndNSEzrTbOxi7i1GPgMNe-zgShsySsCPDWGcrei1pPTCZEXaJPbnVOyKLzPa8yOkHZ8tILpg"/></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full">
+<div class="p-margin flex flex-col gap-space-md">
+<!-- Top System Context & Utility Authority Indicator -->
+<div class="flex items-center justify-between gap-space-sm bg-surface-container-low p-space-sm rounded-xl">
+<div class="flex items-center gap-2 min-w-0">
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">verified_user</span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider truncate">NEPRA / LESCO TARIFF MODEL</span>
+<span class="font-headline-sm text-headline-sm text-on-surface truncate">Tiered Residential A-1</span>
+</div>
+</div>
+<div class="flex items-center gap-1.5 px-2 py-1 rounded bg-secondary-container/20 text-secondary-container flex-shrink-0">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+<span class="font-label-sm text-label-sm font-semibold tracking-wider">DEFENSE ACTIVE</span>
+</div>
+</div>
+<!-- Hero Slab Radial Gauge & Critical Warning Card -->
+<div class="relative bg-surface-container rounded-xl p-space-md shadow-xl overflow-hidden">
+<div class="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-secondary-container/10 blur-3xl pointer-events-none"></div>
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<!-- Radial Gauge with Animated Metric Rings -->
+<div class="relative w-44 h-44 flex items-center justify-center flex-shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<!-- Background Track -->
+<circle class="stroke-surface-container-highest" cx="60" cy="60" fill="transparent" r="50" stroke-width="9"></circle>
+<!-- Safe Tier Slices (Slab 1 & 2) -->
+<circle class="stroke-primary" cx="60" cy="60" fill="transparent" opacity="0.4" r="50" stroke-dasharray="314.15" stroke-dashoffset="104.7" stroke-linecap="round" stroke-width="9"></circle>
+<!-- Active Slab 3 Arc (Amber Alert zone) -->
+<circle class="stroke-secondary-container" cx="60" cy="60" fill="transparent" id="radial-progress-arc" r="50" stroke-dasharray="314.15" stroke-dashoffset="65" stroke-linecap="round" stroke-width="9" style="filter: drop-shadow(0 0 6px rgba(254, 183, 0, 0.45));"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center p-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">CONSUMED</span>
+<div class="flex items-baseline gap-0.5">
+<span class="font-display-lg-mobile text-display-lg-mobile font-bold text-on-surface tracking-tight" id="counter-val">284</span>
+<span class="font-label-md text-label-md text-secondary-container font-semibold">kWh</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline">OF 300 CAP</span>
+</div>
+</div>
+<!-- Gauge Legend and Threshold Warning -->
+<div class="flex flex-col justify-between w-full min-w-0">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="font-label-md text-label-md text-secondary-container font-semibold uppercase">SLAB 3 PROXIMITY</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant font-mono">94.6% RATIO</span>
+</div>
+<!-- Alert Container with High Contrast Framing -->
+<div class="p-space-sm rounded-lg bg-surface-container-high flex flex-col gap-1.5 my-space-xs">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">warning</span>
+<span class="font-body-md text-body-md font-semibold text-secondary">16 Units Remaining</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+              Exceeding 300 units triggers <strong class="text-on-surface">Slab 4 penalty (+₨ 18.50/unit)</strong> retroactively across unshielded base brackets.
+            </p>
+</div>
+<!-- Smart Load Shielding Status -->
+<div class="flex items-center justify-between text-on-surface pt-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">solar_power</span> Net Generation Buffer
+            </span>
+<span class="font-label-sm text-label-sm font-mono text-primary font-bold">+3.2 kWh Today</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Slab Ladder Execution Architecture -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between px-1">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Dynamic Slab Ladder</span>
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase">DISCO AUDITED</span>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Slab 1: Covered by Solar -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium">Slab 1</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">1 - 100 kWh</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary">100% OFF-GRID SOLAR OFFSET</span>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">₨ 14.50</span>
+<span class="font-label-sm text-label-sm text-outline-variant block">/ unit</span>
+</div>
+</div>
+<!-- Slab 2: Covered by Solar -->
+<div class="p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface font-medium">Slab 2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">101 - 200 kWh</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary">100% SOLAR + STORAGE RUN</span>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-label-md text-label-md text-on-surface font-semibold">₨ 19.80</span>
+<span class="font-label-sm text-label-sm text-outline-variant block">/ unit</span>
+</div>
+</div>
+<!-- Slab 3: ACTIVE & CRITICAL -->
+<div class="p-space-sm rounded-xl bg-surface-container-high flex flex-col gap-space-xs shadow-lg">
+<div class="flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary-container flex-shrink-0 animate-pulse">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-secondary font-semibold">Slab 3</span>
+<span class="font-label-sm text-label-sm text-on-surface">201 - 300 kWh</span>
+<span class="px-1.5 py-0.2 rounded bg-secondary/15 text-secondary font-label-sm text-label-sm">LIVE</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary-container font-mono">84 UNITS LOGGED • 16 REMAINING</span>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-label-md text-label-md text-secondary font-bold">₨ 28.50</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">/ unit</span>
+</div>
+</div>
+<!-- Micro Segmented Progress Bar -->
+<div class="w-full bg-surface-container-highest rounded-full h-2 overflow-hidden flex">
+<div class="bg-secondary-container h-full rounded-full transition-all duration-700 ease-out" style="width: 84%;"></div>
+</div>
+</div>
+<!-- Slab 4: LOCKED / MITIGATED -->
+<div class="p-space-sm rounded-xl bg-surface-container-lowest opacity-75 flex items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<div class="w-9 h-9 rounded-lg bg-surface-container flex items-center justify-center text-outline flex-shrink-0">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface-variant font-medium">Slab 4</span>
+<span class="font-label-sm text-label-sm text-outline">301 - 700 kWh</span>
+</div>
+<span class="font-label-sm text-label-sm text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">security</span> PROTECTED BY AUTO-SHEDDING
+              </span>
+</div>
+</div>
+<div class="text-right flex-shrink-0">
+<span class="font-label-md text-label-md text-outline font-semibold">₨ 42.00</span>
+<span class="font-label-sm text-label-sm text-outline-variant block">/ unit</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Predictive 30-Day Bill Forecast Card -->
+<div class="bg-surface-container-high rounded-xl p-space-md shadow-xl flex flex-col gap-space-sm relative overflow-hidden">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[22px]">trending_down</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">30-Day Bill Projection</span>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm font-semibold">
+          SAVINGS 51%
+        </span>
+</div>
+<div class="grid grid-cols-2 gap-space-sm pt-space-xs">
+<div class="p-space-sm rounded-lg bg-surface-container flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">PROJECTED BILL</span>
+<div class="my-1">
+<span class="font-headline-lg text-headline-lg text-primary font-bold tracking-tight">₨ 16,850</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">check</span> Optima Regulated
+          </span>
+</div>
+<div class="p-space-sm rounded-lg bg-surface-container flex flex-col justify-between opacity-80">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">WITHOUT OPTIMA</span>
+<div class="my-1">
+<span class="font-headline-lg text-headline-lg text-on-surface-variant font-medium line-through">₨ 34,200</span>
+</div>
+<span class="font-label-sm text-label-sm text-error flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> Slab 4 Spillover
+          </span>
+</div>
+</div>
+<!-- Net Economic Benefit Banner -->
+<div class="p-space-xs px-space-sm rounded-lg bg-primary-container/10 flex items-center justify-between text-on-surface">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Avoided Tariff Penalties:</span>
+<span class="font-label-md text-label-md text-primary font-bold font-mono">₨ 17,350 NET SAVED</span>
+</div>
+</div>
+<!-- Daily Hourly Tariff Heat Map -->
+<div class="bg-surface-container rounded-xl p-space-md shadow-md flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold block">Hourly TOU Schedule</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Time-of-Use dynamic rates &amp; peak windows</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</div>
+</div>
+<!-- 24-Hour Segment Heatmap Visualizer -->
+<div class="flex flex-col gap-2 pt-space-xs">
+<div class="grid grid-cols-12 gap-1 w-full h-8">
+<!-- 00:00 - 08:00 Off-Peak Normal -->
+<div class="col-span-4 bg-tertiary-container/30 rounded flex items-center justify-center group relative cursor-pointer" title="00:00 - 08:00 (Off Peak: Base)">
+<span class="font-label-sm text-label-sm text-tertiary font-mono">OFF</span>
+</div>
+<!-- 08:00 - 16:00 Solar Abundance Window -->
+<div class="col-span-4 bg-primary/30 rounded flex items-center justify-center group relative cursor-pointer" title="08:00 - 16:00 (Solar Peak / Zero Cost)">
+<span class="font-label-sm text-label-sm text-primary font-mono">SOLAR</span>
+</div>
+<!-- 16:00 - 18:00 Neutral -->
+<div class="col-span-1 bg-surface-container-highest rounded"></div>
+<!-- 18:00 - 22:00 Severe Peak Window -->
+<div class="col-span-2 bg-secondary-container/40 rounded flex items-center justify-center animate-pulse cursor-pointer" title="18:00 - 22:00 (Severe Peak Slab)">
+<span class="font-label-sm text-label-sm text-secondary font-mono font-bold">PEAK</span>
+</div>
+<!-- 22:00 - 24:00 Night Base -->
+<div class="col-span-1 bg-tertiary-container/20 rounded"></div>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm px-1">
+<span>00:00</span>
+<span>08:00</span>
+<span>16:00</span>
+<span>20:00</span>
+<span>24:00</span>
+</div>
+<!-- Tariff Legend Strip -->
+<div class="grid grid-cols-3 gap-2 pt-space-xs">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-sm bg-primary/40"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Solar Shift (Free)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-sm bg-tertiary-container/40"></span>
+<span class="font-label-sm text-label-sm text-on-surface-variant truncate">Off-Peak (Base)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-sm bg-secondary-container/50"></span>
+<span class="font-label-sm text-label-sm text-secondary truncate">Evening Peak (₨ 42+)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action & Expansion Suite -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Battery Expansion Simulator Trigger -->
+<button class="w-full bg-primary-container text-on-primary-container py-3.5 px-space-md rounded-xl font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-lg active:scale-[0.98] transition-transform" id="simulate-btn">
+<span class="material-symbols-outlined text-[20px]">battery_charging_full</span>
+<span>SIMULATE BATTERY CAPACITY EXPANSION</span>
+</button>
+<!-- Audit Report PDF Generation -->
+<button class="w-full bg-surface-container-high text-on-surface py-3 px-space-md rounded-xl font-label-md text-label-md flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-all" id="export-pdf-btn">
+<span class="material-symbols-outlined text-[18px] text-tertiary">picture_as_pdf</span>
+<span>EXPORT DISCO VERIFIED AUDIT REPORT</span>
+</button>
+</div>
+<!-- Battery Simulation Drawer / Context Sheet (Controlled via micro-interaction) -->
+<div class="hidden bg-surface-container-highest/95 p-space-md rounded-xl flex flex-col gap-space-sm transition-all duration-300" id="sim-drawer">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">tune</span>
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Expansion Modeler</span>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface" id="close-sim-btn">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Adding a 5.12 kWh LiFePO4 battery module will eliminate evening peak grid reliance, freezing consumption at Slab 2.
+      </p>
+<div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface font-medium">Add +5.12 kWh LiFePO4 Storage</span>
+<span class="font-label-md text-label-md text-primary font-bold">₨ -4,200/mo</span>
+</div>
+<button class="w-full bg-surface-bright text-on-surface py-2 rounded-lg font-label-sm text-label-sm font-semibold tracking-wider uppercase">
+        Apply To Scenario Engine
+      </button>
+</div>
+</div>
+</div>
+<script>
+  (function initTariffAnalytics() {
+    const simBtn = document.getElementById('simulate-btn');
+    const closeBtn = document.getElementById('close-sim-btn');
+    const simDrawer = document.getElementById('sim-drawer');
+    const exportBtn = document.getElementById('export-pdf-btn');
+
+    if (simBtn && simDrawer) {
+      simBtn.addEventListener('click', () => {
+        simDrawer.classList.toggle('hidden');
+        if (!simDrawer.classList.contains('hidden')) {
+          simDrawer.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        }
+      });
+    }
+
+    if (closeBtn && simDrawer) {
+      closeBtn.addEventListener('click', () => {
+        simDrawer.classList.add('hidden');
+      });
+    }
+
+    if (exportBtn) {
+      exportBtn.addEventListener('click', () => {
+        const originalText = exportBtn.innerHTML;
+        exportBtn.innerHTML = `
+          <span class="material-symbols-outlined text-[18px] animate-spin text-primary">sync</span>
+          <span>COMPILING TARIFF BREAKDOWN...</span>
+        `;
+        setTimeout(() => {
+          exportBtn.innerHTML = `
+            <span class="material-symbols-outlined text-[18px] text-primary">download_done</span>
+            <span>AUDIT_REPORT_AUG2024.PDF DOWNLOADED</span>
+          `;
+          setTimeout(() => {
+            exportBtn.innerHTML = originalText;
+          }, 3500);
+        }, 1200);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-2xl shadow-[0_-4px_24px_rgba(0,0,0,0.5)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-on-surface-variant transition-colors" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[22px]">bolt</span><span class="font-label-sm text-label-sm">Flow</span></a><a class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-on-surface-variant transition-colors" data-path="scanner" href="#"><span class="material-symbols-outlined text-[22px]">document_scanner</span><span class="font-label-sm text-label-sm">OCR</span></a><a class="flex flex-col items-center justify-center gap-1 w-16 h-14 text-on-surface-variant transition-colors" data-path="arbitrage" href="#"><span class="material-symbols-outlined text-[22px]">toggle_on</span><span class="font-label-sm text-label-sm">Relays</span></a><a aria-current="page" class="flex flex-col items-center justify-center gap-1 w-16 h-14 transition-colors text-primary font-semibold" data-path="analytics" href="#"><span class="material-symbols-outlined text-[22px]">analytics</span><span class="font-label-sm text-label-sm">Tariff</span></a></div></nav></body></html>

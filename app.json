@@ -28,7 +28,13 @@
       "favicon": "./assets/logo.png"
     },
     "plugins": [
-      "expo-secure-store"
+      "expo-secure-store",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow BijliOptima to access your camera to scan electricity bills."
+        }
+      ]
     ]
   }
 }

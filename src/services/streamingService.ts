@@ -77,6 +77,7 @@ class StreamingService {
   private currentGridVolts: number = 228.4;
   private currentGridHz: number = 50.02;
   private isGridTripped: boolean = false;
+  private isManualMode: boolean = false;
 
   // Listeners
   private telemetryListeners: Set<TelemetryListener> = new Set();
@@ -281,6 +282,22 @@ class StreamingService {
     this.currentLoadBase = Math.round(kw * 1000);
   }
 
+  public setManualMode(enabled: boolean) {
+    this.isManualMode = enabled;
+  }
+
+  public setManualSolarBase(kw: number) {
+    this.currentSolarBase = Math.round(kw * 1000);
+  }
+
+  public setManualLoadBase(kw: number) {
+    this.currentLoadBase = Math.round(kw * 1000);
+  }
+
+  public setManualBatterySoc(soc: number) {
+    this.currentBatterySoc = Math.max(0, Math.min(100, soc));
+  }
+
   // --- INTERNAL EMISSION & SIMULATION LOGIC ---
 
   private generateAndEmitPacket() {
@@ -288,11 +305,11 @@ class StreamingService {
     this.lastPacketTimestamp = Date.now();
 
     // Micro-jitter in solar irradiance & household power factor
-    const solarNoise = Math.sin(Date.now() / 4000) * 80 + (Math.random() * 20 - 10);
-    const loadNoise = Math.cos(Date.now() / 3500) * 50 + (Math.random() * 15 - 7.5);
+    const solarNoise = this.isManualMode ? 0 : Math.sin(Date.now() / 4000) * 80 + (Math.random() * 20 - 10);
+    const loadNoise = this.isManualMode ? 0 : Math.cos(Date.now() / 3500) * 50 + (Math.random() * 15 - 7.5);
 
     const solarWatts = Math.max(0, Math.round(this.currentSolarBase + solarNoise));
-    const houseWatts = Math.max(300, Math.round(this.currentLoadBase + loadNoise));
+    const houseWatts = Math.max(0, Math.round(this.currentLoadBase + loadNoise));
 
     let gridWatts = 0;
     let batteryAmps = 0;

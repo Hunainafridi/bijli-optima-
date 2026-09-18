@@ -108,6 +108,13 @@ interface EnergyContextType {
   restoreFeederSync: () => void;
   toggleSimulatedFiberOutage: () => void;
   hideToast: () => void;
+  
+  // Manual Override Methods
+  isManualMode: boolean;
+  setManualMode: (enabled: boolean) => void;
+  setManualSolarKw: (kw: number) => void;
+  setManualLoadKw: (kw: number) => void;
+  setManualBatterySoc: (soc: number) => void;
 }
 
 const INITIAL_RELAYS: ApplianceRelay[] = [
@@ -259,6 +266,8 @@ export const EnergyProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       executionMs: 18,
     },
   ]);
+
+  const [isManualMode, setIsManualMode] = useState<boolean>(false);
 
   // Ref tracking for instant reflex loop without stale closures
   const relaysRef = useRef<ApplianceRelay[]>(relays);
@@ -568,6 +577,12 @@ export const EnergyProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     true
   );
 
+  const handleSetManualMode = (enabled: boolean) => {
+    setIsManualMode(enabled);
+    streamingService.setManualMode(enabled);
+    showToast(enabled ? 'Manual Telemetry Mode Active' : 'Auto Simulation Restored');
+  };
+
   return (
     <EnergyContext.Provider
       value={{
@@ -593,6 +608,11 @@ export const EnergyProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         restoreFeederSync,
         toggleSimulatedFiberOutage,
         hideToast,
+        isManualMode,
+        setManualMode: handleSetManualMode,
+        setManualSolarKw: streamingService.setManualSolarBase.bind(streamingService),
+        setManualLoadKw: streamingService.setManualLoadBase.bind(streamingService),
+        setManualBatterySoc: streamingService.setManualBatterySoc.bind(streamingService),
       }}
     >
       {children}

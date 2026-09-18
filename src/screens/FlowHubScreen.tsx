@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import { NepraSentinelBanner } from '../components/flow/NepraSentinelBanner';
 import { NetRevenueCard } from '../components/flow/NetRevenueCard';
 import { OrbitalEnergyHub } from '../components/flow/OrbitalEnergyHub';
+import { ManualOverridePanel } from '../components/dashboard/ManualOverridePanel';
 import { SparklineRow } from '../components/flow/SparklineCard';
 import { BillScanShortcut } from '../components/flow/BillScanShortcut';
 import { QuickRelayList } from '../components/flow/QuickRelayList';
@@ -31,8 +32,13 @@ export const FlowHubScreen: React.FC<FlowHubScreenProps> = ({
       {/* 2. Telemetry Hero Net Revenue Banner */}
       <NetRevenueCard />
 
-      {/* 3. Sankey Orbital Core: Interactive Energy Flow Hub */}
-      <OrbitalEnergyHub />
+      {/* 1. Real-Time Energy Hub */}
+      <View style={styles.hubWrapper}>
+        <OrbitalEnergyHub />
+      </View>
+
+      {/* 2. Manual Controls */}
+      <ManualOverridePanel />
 
       {/* 4. Real-Time kWh Sparkline Metrics */}
       <SparklineRow />
@@ -58,6 +64,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 14,
     gap: 14,
+  },
+  hubWrapper: {
+    alignItems: 'center',
+    marginVertical: 10,
   },
   bottomSpacer: {
     height: 90,

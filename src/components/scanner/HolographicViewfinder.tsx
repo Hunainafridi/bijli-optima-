@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import { CameraView, useCameraPermissions } from 'expo-camera';
 import { colors } from '../../constants/colors';
 
 interface HolographicViewfinderProps {
@@ -21,6 +22,9 @@ export const HolographicViewfinder: React.FC<HolographicViewfinderProps> = ({
   imageUri,
   onImageSelected,
 }) => {
+  const [permission, requestPermission] = useCameraPermissions();
+  const cameraRef = useRef<CameraView>(null);
+
   // Laser sweep animation loop
   const laserAnim = useRef(new Animated.Value(0)).current;
 
@@ -61,6 +65,19 @@ export const HolographicViewfinder: React.FC<HolographicViewfinderProps> = ({
     }
   };
 
+  const handleCapture = async () => {
+    if (cameraRef.current) {
+      try {
+        const photo = await cameraRef.current.takePictureAsync({ quality: 0.9 });
+        if (photo && photo.uri) {
+          onImageSelected?.(photo.uri);
+        }
+      } catch (e) {
+        console.warn('Failed to take picture:', e);
+      }
+    }
+  };
+
   const laserTranslateY = laserAnim.interpolate({
     inputRange: [0, 1],
     outputRange: [0, 260],
@@ -68,17 +85,33 @@ export const HolographicViewfinder: React.FC<HolographicViewfinderProps> = ({
 
   return (
     <View style={styles.container}>
-      {/* Background Simulated Bill Document */}
+      {/* Background Simulated Bill Document OR Real Camera */}
       <View style={styles.imageWrapper}>
-        <Image
-          source={
-            imageUri
-              ? { uri: imageUri }
-              : require('../../../assets/bill_sample.png')
-          }
-          style={styles.billImage}
-          resizeMode="cover"
-        />
+        {imageUri ? (
+          <Image
+            source={{ uri: imageUri }}
+            style={styles.billImage}
+            resizeMode="cover"
+          />
+        ) : (
+          permission?.granted ? (
+            <CameraView
+              ref={cameraRef}
+              style={styles.billImage}
+              facing="back"
+              autofocus="on"
+            />
+          ) : (
+            <View style={styles.cameraPlaceholder}>
+              <Text style={styles.placeholderText}>Waiting for Camera Permission...</Text>
+              {!permission && (
+                <TouchableOpacity onPress={requestPermission} style={styles.permButton}>
+                  <Text style={styles.permText}>Grant Permission</Text>
+                </TouchableOpacity>
+              )}
+            </View>
+          )
+        )}
         <View style={styles.darkGradientOverlay} />
       </View>
 
@@ -135,14 +168,21 @@ export const HolographicViewfinder: React.FC<HolographicViewfinderProps> = ({
         </Text>
       </View>
 
+      {/* Capture Button */}
+      {!imageUri && permission?.granted && (
+        <TouchableOpacity style={styles.captureBtn} onPress={handleCapture} activeOpacity={0.8}>
+          <MaterialCommunityIcons name="camera-iris" size={32} color={colors.textPrimary} />
+        </TouchableOpacity>
+      )}
+
       {/* Pick/Change Image Floating Button */}
       <TouchableOpacity
         style={styles.changePhotoBtn}
         onPress={handlePickImage}
         activeOpacity={0.8}
       >
-        <MaterialCommunityIcons name="camera-plus-outline" size={16} color={colors.textPrimary} />
-        <Text style={styles.changePhotoText}>Upload Bill</Text>
+        <MaterialCommunityIcons name="image-plus" size={16} color={colors.textPrimary} />
+        <Text style={styles.changePhotoText}>{imageUri ? 'Upload Different Bill' : 'Upload Bill'}</Text>
       </TouchableOpacity>
     </View>
   );
@@ -165,11 +205,33 @@ const styles = StyleSheet.create({
   },
   imageWrapper: {
     ...StyleSheet.absoluteFill,
+    backgroundColor: '#000',
   },
   billImage: {
     width: '100%',
     height: '100%',
     opacity: 0.85,
+  },
+  cameraPlaceholder: {
+    width: '100%',
+    height: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  placeholderText: {
+    color: colors.textSecondary,
+    marginBottom: 10,
+    fontFamily: Platform.OS === 'ios' ? 'Courier' : 'monospace',
+  },
+  permButton: {
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    backgroundColor: colors.primaryBright,
+    borderRadius: 8,
+  },
+  permText: {
+    color: '#000',
+    fontWeight: 'bold',
   },
   darkGradientOverlay: {
     ...StyleSheet.absoluteFill,
@@ -338,5 +400,19 @@ const styles = StyleSheet.create({
     fontSize: 11,
     fontWeight: '600',
     color: colors.textPrimary,
+  },
+  captureBtn: {
+    position: 'absolute',
+    bottom: 16,
+    alignSelf: 'center',
+    backgroundColor: 'rgba(0, 229, 153, 0.2)',
+    borderWidth: 2,
+    borderColor: colors.primaryBright,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 20,
   },
 });

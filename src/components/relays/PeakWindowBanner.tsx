@@ -2,8 +2,13 @@ import React from 'react';
 import { View, Text, StyleSheet, Platform } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { colors } from '../../constants/colors';
+import { isPKTPeakHour } from '../../utils/timeUtils';
 
 export const PeakWindowBanner: React.FC = () => {
+  if (!isPKTPeakHour()) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       {/* Background Radiance */}

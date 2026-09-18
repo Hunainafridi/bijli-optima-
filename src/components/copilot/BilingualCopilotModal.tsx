@@ -12,7 +12,8 @@ import {
 } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { colors } from '../../constants/colors';
-import { useEnergy } from '../../context/EnergyContext';
+import { EnergyTelemetry, NepraSlabStatus, useEnergy } from '../../context/EnergyContext';
+import { getPKTTimeShort } from '../../utils/timeUtils';
 import { copilotService, CopilotMessage } from '../../services/copilotService';
 
 interface BilingualCopilotModalProps {
@@ -65,7 +66,7 @@ export const BilingualCopilotModal: React.FC<BilingualCopilotModalProps> = ({
       id: `user_${Date.now()}`,
       sender: 'user',
       language: 'en',
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      timestamp: getPKTTimeShort(),
       text: textToSend.trim(),
     };
 

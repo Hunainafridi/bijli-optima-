@@ -1,6 +1,8 @@
 // Bilingual AI Energy Copilot Service
 // Powers contextual voice & text advisory with tool-calling in English and Roman Urdu
 
+import { getPKTTimeShort } from '../utils/timeUtils';
+
 export interface CopilotMessage {
   id: string;
   sender: 'user' | 'assistant';
@@ -44,7 +46,7 @@ export const copilotService = {
           id: `msg_${Date.now()}`,
           sender: 'assistant',
           language: 'ur',
-          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          timestamp: getPKTTimeShort(),
           text: `Bilkul, chala lein! Solar is waqt ${context.solarKw} kW generate kar raha hai aur battery ${context.batterySoc}% par hai. Aglay 2 ghantay dhoop achi rahay gi, motor chalane se grid se koi unit draw nahi hoga.`,
           toolCall: {
             toolName: 'check_solar_and_battery',
@@ -61,7 +63,7 @@ export const copilotService = {
           id: `msg_${Date.now()}`,
           sender: 'assistant',
           language: 'ur',
-          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+          timestamp: getPKTTimeShort(),
           text: `Abhi ruk jaein. Solar generation sirf ${context.solarKw} kW hai aur battery ${context.batterySoc}% par hai. Motor chalane se grid se Rs. 48/unit par bijli import hogi. Behtar hai 11:30 AM tak intezar karein jab dhoop peak par ho.`,
           toolCall: {
             toolName: 'check_solar_and_battery',
@@ -82,7 +84,7 @@ export const copilotService = {
         id: `msg_${Date.now()}`,
         sender: 'assistant',
         language: 'en',
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        timestamp: getPKTTimeShort(),
         text: `Simulating dual inverter AC draw (2.4 kW total) against your 10kWh LiFePO4 battery and 3.4 kW solar array:\n\n• Solar covers 100% of both ACs until 4:30 PM.\n• Battery will maintain 80% reserve by sunset (6:00 PM).\n• Night runtime available: 6 hours 15 minutes.\n\nSafe to run both ACs without crossing into NEPRA Slab 4!`,
         toolCall: {
           toolName: 'simulate_depletion_curve',
@@ -102,7 +104,7 @@ export const copilotService = {
         id: `msg_${Date.now()}`,
         sender: 'assistant',
         language: 'en',
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        timestamp: getPKTTimeShort(),
         text: `Here is your itemized End-of-Month Audited Savings breakdown:\n\n• Avoided peak tariff units: Rs. 7,800\n• Solar self-consumption vs export gap: Rs. 13,400\n• NEPRA Slab 3 protection savings: Rs. 9,200\n\nTotal Direct Monthly Benefit: ₨ 30,400 saved.`,
         toolCall: {
           toolName: 'audit_monthly_roi',
@@ -122,7 +124,7 @@ export const copilotService = {
         id: `msg_${Date.now()}`,
         sender: 'assistant',
         language: 'ur',
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        timestamp: getPKTTimeShort(),
         text: `Solar surplus is waqt 2.4 kW par peak kar raha hai. Yeh behtareen waqt hai washing machine chalane, EV charger lagane ya paani ka filter plant chalane ka, taakay bijli net billing mein Rs. 11 mein bechne ke bajaye ghar mein muft istemal ho.`,
         toolCall: {
           toolName: 'check_net_billing_absorption',
@@ -141,7 +143,7 @@ export const copilotService = {
       id: `msg_${Date.now()}`,
       sender: 'assistant',
       language: 'en',
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      timestamp: getPKTTimeShort(),
       text: `Grid is synchronized at 50.02 Hz. Solar generation is currently 3.4 kW, covering 100% of house loads (2.6 kW) with +0.8 kW exported. NEPRA Slab 3 sentinel is active (16 units to peak tariff). How can I assist with your energy operations?`,
       toolCall: {
         toolName: 'get_system_status',

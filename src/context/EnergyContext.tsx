@@ -9,6 +9,7 @@ import {
   StreamQualityMetrics,
   StreamTransport,
 } from '../services/streamingService';
+import { getPKTTimeString, isPKTPeakHour } from '../utils/timeUtils';
 
 export interface ApplianceRelay {
   id: string;
@@ -385,7 +386,7 @@ export const EnergyProvider: React.FC<{ children: ReactNode }> = ({ children }) 
         const executionMs = Math.max(12, Date.now() - executionStart);
         const logEntry: ReflexEventLog = {
           id: `reflex-${Date.now()}`,
-          timestamp: new Date().toLocaleTimeString(),
+          timestamp: getPKTTimeString(),
           type: 'OVERLOAD_SURGE_SHED',
           action: `Tripped ${targetToTrip.name} in ${executionMs}ms (${pkt.houseLoadKw}kW > 5.0kW inverter capacity)`,
           executionMs,
@@ -402,7 +403,7 @@ export const EnergyProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       // Divert surplus to storage
       const logEntry: ReflexEventLog = {
         id: `reflex-divert-${Date.now()}`,
-        timestamp: new Date().toLocaleTimeString(),
+        timestamp: getPKTTimeString(),
         type: 'REVERSE_FEED_BLOCKED',
         action: `Diverted ${Math.abs(pkt.gridWatts)}W surplus away from wholesale grid export into LFP battery`,
         executionMs: 24,
@@ -458,7 +459,7 @@ export const EnergyProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     }
 
     // EV Wallbox Charger peak window protection requires PIN
-    if (target.isLocked && !target.isOn) {
+    if (target.isLocked && !target.isOn && isPKTPeakHour()) {
       if (!pinCandidate) {
         return {
           success: false,
@@ -574,7 +575,7 @@ export const EnergyProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
   const thermalComparison = dualUtilityService.calculateWinterHeatingParity(
     telemetry.solarKw - telemetry.houseLoadKw,
-    true
+    isPKTPeakHour()
   );
 
   const handleSetManualMode = (enabled: boolean) => {
